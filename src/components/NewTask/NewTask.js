@@ -5,13 +5,13 @@ import TaskForm from "./TaskForm";
 const NewTask = (props) => {
   const { isLoading, error, sendRequest: sendTaskRequest } = useHttp();
 
-  const applyData = (task) => {
-    const generatedId = task.name;
-    const createdTask = { id: generatedId, text: taskText };
-    props.onAddTask(createdTask);
-  };
-
   const enterTaskHandler = async (taskText) => {
+    const applyData = (task) => {
+      const generatedId = task.name;
+      const createdTask = { id: generatedId, text: taskText };
+      props.onAddTask(createdTask);
+    };
+
     sendTaskRequest(
       {
         url: "https://react-http-489ae-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
